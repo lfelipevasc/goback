@@ -35,6 +35,14 @@
         "@typescript-eslint/no-unused-vars":["error",{
             "argsIgnorePattern":"_"
         }],
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+                "selection": "interface",
+                "prefix": ["I"],
+                "format": ["PascalCase"]
+            }
+        ]
     },
     "settings": {
         "import/resolver":{
