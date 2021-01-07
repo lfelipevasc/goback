@@ -9,3 +9,4 @@ tmp/*
 ormconfig.json
 !tmp/.gitkeep
 .env
+dist
