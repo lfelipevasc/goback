@@ -33,7 +33,9 @@ jobs:
           source: ".,!node_modules"
           target: "~/app/goback"
     # Executar yarn na Digital Ocean
-      - name: Install dependencies on digital ocean
+    # Executar as migrations do typeorm
+    # Restart no servidor node.js
+      - name: Run prod scripts
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -43,23 +45,5 @@ jobs:
           script: |
             cd ~/app/goback
             yarn
-    # Executar as migrations do typeorm
-      - name: Run migrations on digital ocean
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          port: ${{ secrets.SSH_PORT }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd ~/app/goback
             ./node_modules/.bin/typeorm migration:run
-    # Restart no servidor node.js
-      - name: Restart server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          port: ${{ secrets.SSH_PORT }}
-          key: ${{ secrets.SSH_KEY }}
-          script: pm2 restart gobarber-api
+            pm2 restart gobarber-api
