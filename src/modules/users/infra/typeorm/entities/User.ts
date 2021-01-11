@@ -35,8 +35,9 @@ import { Exclude, Expose } from 'class-transformer';
 
     @Expose({ name: 'avatar_url'})
     getAvatarUrl(): string | null{
+        const defaultAvatar = 'https://www.minervastrategies.com/wp-content/uploads/2016/03/default-avatar.jpg';
         if (!this.avatar){
-            return null;
+            return defaultAvatar;
         }
 
         switch (uploadConfig.driver) {
@@ -45,7 +46,7 @@ import { Exclude, Expose } from 'class-transformer';
             case 's3':
                 return `https://${uploadConfig.config.aws.bucket}.s3.amazonaws.com/${this.avatar}`
              default:
-             return null;
+             return defaultAvatar;
         }
     }
   }
