@@ -1,3 +1,20 @@
+### 🛠 Ferramentas utilizadas:
+
+- Node.js
+- TypeScript
+- Express
+- Multer
+- uuid v4
+- PostgreSQL
+- MongoDB
+- Date-fns
+- Jest
+- TypeORM
+- JWT-token
+- Eslint
+- Prettier
+- EditorConfig
+
 # Recuperação de senha
 
 **Requisitos Funcionais**
